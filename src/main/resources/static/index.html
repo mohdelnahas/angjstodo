@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>IGT TODO Demo App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body ng-app="todoApp">
+    <h3> IGT Demo Todo</h3>
+   <h6>Spring Boot + Embedded MongoDB + AngularJS</h6>
+    <hr>
+    <div ng-controller="TodoListController as todoList" class="container-fluid">
+     
+      <ul>
+        <li ng-repeat="todo in mtodoList">
+          <input type="checkbox" data-id="{{todo.id}}" ng-model="todo.completed" ng-change="todoList.done()">
+          <span class="done-{{todo.completed}}">{{todo.title}}</span>
+        </li>
+      </ul>
+      <form ng-submit="todoList.addTodo()">
+        <input type="text" ng-model="todoList.title"  size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+    </div>
+    
+</body>
+</html>
